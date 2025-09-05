@@ -45,4 +45,3 @@ LIMIT 3;
 | Bayern Munich | 398.5               |
 | RB Leipzig    | 179.5               |
 | B. Leverkusen | 145                 |
-
