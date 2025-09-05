@@ -17,15 +17,15 @@
 12) Вивести команди, де топ-3 гравці займають 50% платіжної відомості
 
 
-# ⚽ Bundesliga Players – ClickHouse Test Task
+# Bundesliga Players – ClickHouse Test Task
 
-## 📌 Джерело даних
+## Джерело даних
 Дані взято з Kaggle:  
-👉 [Bundesliga Soccer Player Dataset](https://www.kaggle.com/datasets/oles04/bundesliga-soccer-player)
+[Bundesliga Soccer Player Dataset](https://www.kaggle.com/datasets/oles04/bundesliga-soccer-player)
 
 ---
 
-## 🔎 Завдання та рішення
+##  Завдання та рішення
 
 ### 1) Топ-3 клуби з найдорожчим захистом
 ```sql
