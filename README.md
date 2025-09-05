@@ -1,4 +1,4 @@
-# clickhouse-test-task
+# Clickhouse-test-task
 Тестове завдання на основі датасету:  https://www.kaggle.com/datasets/oles04/bundesliga-soccer-player
 
 Переважний діалект SQL для вирішення задачі - ClickHouse
@@ -45,3 +45,4 @@ LIMIT 3;
 | Bayern Munich | 398.5               |
 | RB Leipzig    | 179.5               |
 | B. Leverkusen | 145                 |
+
