@@ -45,4 +45,20 @@ LIMIT 3;
 | Bayern Munich | 398.5               |
 | RB Leipzig    | 179.5               |
 | B. Leverkusen | 145                 |
+```
+### 2) У розрізі клубу та гравця порахувати, скільки гравців підписало контракт із клубом після нього
+```sql
+SELECT
+    bp1.club
+    , bp1.name
+    , COUNT(*) AS players_after
+FROM bundesliga_player AS bp1
+JOIN bundesliga_player AS bp2
+  ON bp1.club = bp2.club
+ AND bp2.joined_club > bp1.joined_club
+GROUP BY bp1.club, bp1.name
+ORDER BY bp1.club, players_after DESC;
 
+Результат:
+
+```
