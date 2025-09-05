@@ -15,3 +15,25 @@
 10) У якої команди найзіграніший склад (найдовше грають разом)
 11) У яких командах є тезки
 12) Вивести команди, де топ-3 гравці займають 50% платіжної відомості
+
+
+# ⚽ Bundesliga Players – ClickHouse Test Task
+
+## 📌 Джерело даних
+Дані взято з Kaggle:  
+👉 [Bundesliga Soccer Player Dataset](https://www.kaggle.com/datasets/oles04/bundesliga-soccer-player)
+
+---
+
+## 🔎 Завдання та рішення
+
+### 1) Топ-3 клуби з найдорожчим захистом
+```sql
+SELECT 
+    club,
+    SUM(price) AS total_defence_value
+FROM bundesliga_player
+WHERE position LIKE 'Defender -%'
+GROUP BY club
+ORDER BY total_defence_value DESC
+LIMIT 3;
