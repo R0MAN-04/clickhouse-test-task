@@ -37,6 +37,8 @@ WHERE position LIKE 'Defender -%'
 GROUP BY club
 ORDER BY total_defence_value DESC
 LIMIT 3;
+
+Результат:
 ---
 | club          | total_defence_value |
 |---------------|---------------------|
