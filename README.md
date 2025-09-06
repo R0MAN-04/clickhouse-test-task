@@ -771,12 +771,12 @@ ORDER BY price DESC;
 (припущення: виходжу з того, що гравцям без агента складніше самостійно отримати контракт)
 ```sql
 SELECT 
-    position,
-    SUM(CASE WHEN player_agent = '' THEN 1 ELSE 0 END) / COUNT(*) AS no_agent_ratio
+    position
+    , SUM(if(player_agent = '', 1, 0)) / COUNT() AS no_agent_ratio
 FROM bundesliga_player
 GROUP BY position
 ORDER BY no_agent_ratio DESC
-LIMIT 1;
+LIMIT 1
 
 Результат:
 | position                 | no_agent_ratio |
