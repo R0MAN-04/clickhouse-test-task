@@ -658,7 +658,6 @@ ON bp.position = pos_avg.position
 WHERE bp.price > 1.5 * pos_avg.avg_price
 ORDER BY price DESC;
 
-
 Результат:
 | name                  | club            | position                      | price | avg_price          |
 |-----------------------|-----------------|-------------------------------|-------|--------------------|
@@ -773,9 +772,10 @@ GROUP BY position
 ORDER BY no_agent_ratio DESC
 LIMIT 1;
 
-
 Результат:
-
+| position                 | no_agent_ratio |
+|--------------------------|----------------|
+| midfield - Left Midfield | 0.5            |
 ```
 
 ### 8) У якій команді найперше закінчиться контракт у 5 гравців
@@ -794,9 +794,10 @@ WHERE rn = 5
 ORDER BY toDate(fifth_earliest_expiry) ASC
 LIMIT 1;
 
-
 Результат:
-
+| club         | fifth_earliest_expiry |
+|--------------|-----------------------|
+| Union Berlin | 1970-01-01            |
 ```
 
 ### 9) У якому віці гравці здебільшого виходять на пік своєї вартості
