@@ -39,6 +39,7 @@ ORDER BY total_defence_value DESC
 LIMIT 3;
 
 Результат:
+
 ---
 | club          | total_defence_value |
 |---------------|---------------------|
@@ -60,6 +61,7 @@ GROUP BY bp1.club, bp1.name
 ORDER BY bp1.club, players_after DESC;
 
 Результат:
+
 | club            | name                     | players_after |
 |-----------------|--------------------------|---------------|
 | 1.FC Köln       | Timo Horn                | 26            |
@@ -561,6 +563,7 @@ HAVING avg_french_price > 5
 ORDER BY avg_french_price DESC;
 
 Результат:
+
 | club            | german_ratio |
 |-----------------|--------------|
 | RB Leipzig U19  | 1            |
@@ -582,6 +585,7 @@ GROUP BY club
 HAVING german_ratio > 0.9;
 
 Результат:
+
 | club            | german_ratio |
 |-----------------|--------------|
 | RB Leipzig U19  | 1            |
@@ -610,8 +614,8 @@ FROM (
 WHERE rn = 1
 ORDER BY age;
 
-
 Результат:
+
 | age | player_name         | max_price |
 |-----|---------------------|-----------|
 | 17  | Julien Duranville   | 5         |
@@ -659,6 +663,7 @@ WHERE bp.price > 1.5 * pos_avg.avg_price
 ORDER BY price DESC;
 
 Результат:
+
 | name                  | club            | position                      | price | avg_price          |
 |-----------------------|-----------------|-------------------------------|-------|--------------------|
 | Jude Bellingham       | Bor. Dortmund   | midfield - Central Midfield   | 120   | 10.083928571428574 |
@@ -810,9 +815,11 @@ GROUP BY age
 ORDER BY avg_max_price DESC
 LIMIT 1;
 
-
 Результат:
 
+| age | avg_max_price      |
+|-----|--------------------|
+| 27  | 26.094117647058823 |
 ```
 
 ### 10) У якої команди найзіграніший склад (найдовше грають разом)
@@ -825,9 +832,11 @@ GROUP BY club
 ORDER BY avg_years_in_club DESC
 LIMIT 1;
 
-
 Результат:
 
+| club            | avg_years_in_club |
+|-----------------|-------------------|
+| Bor. M'gladbach | 2375.740740740741 |
 ```
 
 ### 11) У яких командах є тезки
@@ -835,7 +844,7 @@ LIMIT 1;
 SELECT 
     club,
     name,
-    COUNT(*) AS count_same_name
+    COUNT() AS count_same_name
 FROM bundesliga_player
 GROUP BY club, name
 HAVING count_same_name > 1
@@ -844,6 +853,7 @@ ORDER BY club, count_same_name DESC;
 
 Результат:
 
+No records found
 ```
 
 ### 12) Команди, де топ-3 гравці займають 50% платіжної відомості
@@ -854,15 +864,24 @@ FROM (
     SELECT club
         , name
         , price
-        , sum(price) OVER (PARTITION BY club ORDER BY price DESC) AS cumulative_price
-        , sum(price) OVER (PARTITION BY club) AS total_club_price
+        , SUM(price) OVER (PARTITION BY club ORDER BY price DESC) AS cumulative_price
+        , SUM(price) OVER (PARTITION BY club) AS total_club_price
         , row_number() OVER (PARTITION BY club ORDER BY price DESC) AS rn
     FROM bundesliga_player
 ) 
 WHERE rn <= 3 AND cumulative_price / total_club_price >= 0.5
 GROUP BY club;
 
-
 Результат:
 
+| club           |
+|----------------|
+| RB Leipzig U19 |
+| B. Dortmund II |
+| Hertha BSC U19 |
+| W. Bremen U19  |
+| W. Bremen II   |
+| 1.FC Köln II   |
+| RB Leipzig U17 |
+| Hertha BSC II  |
 ```
