@@ -561,7 +561,16 @@ HAVING avg_french_price > 5
 ORDER BY avg_french_price DESC;
 
 Результат:
-
+| club            | german_ratio |
+|-----------------|--------------|
+| RB Leipzig U19  | 1            |
+| Hertha BSC U19  | 1            |
+| W. Bremen U19   | 1            |
+| FC Augsburg U19 | 1            |
+| W. Bremen II    | 1            |
+| 1.FC Köln U19   | 1            |
+| RB Leipzig U17  | 1            |
+| Hertha BSC II   | 1            |
 ```
 ### 4) Клуби, де частка німців вища за 90%
 ```sql
@@ -573,7 +582,16 @@ GROUP BY club
 HAVING german_ratio > 0.9;
 
 Результат:
-
+| club            | german_ratio |
+|-----------------|--------------|
+| RB Leipzig U19  | 1            |
+| Hertha BSC U19  | 1            |
+| W. Bremen U19   | 1            |
+| FC Augsburg U19 | 1            |
+| W. Bremen II    | 1            |
+| 1.FC Köln U19   | 1            |
+| RB Leipzig U17  | 1            |
+| Hertha BSC II   | 1            |
 ```
 ### 5) Найдорожчий у своєму віці гравець (на виході ім'я + вартість)
 ```sql
