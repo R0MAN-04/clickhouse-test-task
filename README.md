@@ -51,7 +51,7 @@ LIMIT 3;
 SELECT
     bp1.club
     , bp1.name
-    , COUNT(*) AS players_after
+    , COUNT() AS players_after
 FROM bundesliga_player AS bp1
 JOIN bundesliga_player AS bp2
   ON bp1.club = bp2.club
@@ -612,7 +612,31 @@ ORDER BY age;
 
 
 Результат:
-
+| age | player_name         | max_price |
+|-----|---------------------|-----------|
+| 17  | Julien Duranville   | 5         |
+| 18  | Youssoufa Moukoko   | 30        |
+| 19  | Jude Bellingham     | 120       |
+| 20  | Jamal Musiala       | 110       |
+| 21  | Josko Gvardiol      | 75        |
+| 22  | Alphonso Davies     | 70        |
+| 23  | Matthijs de Ligt    | 75        |
+| 24  | Randal Kolo Muani   | 65        |
+| 25  | Christopher Nkunku  | 80        |
+| 26  | Kingsley Coman      | 65        |
+| 27  | Leroy Sané          | 70        |
+| 28  | Joshua Kimmich      | 80        |
+| 29  | Matthias Ginter     | 20        |
+| 30  | Mario Götze         | 13        |
+| 31  | Sadio Mané          | 45        |
+| 32  | Kevin Trapp         | 8.5       |
+| 33  | Thomas Müller       | 18        |
+| 34  | Mats Hummels        | 6.5       |
+| 35  | Rafal Gikiewicz     | 1.2       |
+| 36  | Christopher Trimmel | 0.8       |
+| 37  | Manuel Neuer        | 7         |
+| 38  | Philipp Pentke      | 0.3       |
+| 39  | Makoto Hasebe       | 0.8       |
 ```
 ### 6) Гравці з вартістю у 1.5 рази більше ніж у середньому за своєю позицією
 ```sql
@@ -636,7 +660,106 @@ ORDER BY price DESC;
 
 
 Результат:
-
+| name                  | club            | position                      | price | avg_price          |
+|-----------------------|-----------------|-------------------------------|-------|--------------------|
+| Jude Bellingham       | Bor. Dortmund   | midfield - Central Midfield   | 120   | 10.083928571428574 |
+| Jamal Musiala         | Bayern Munich   | midfield - Attacking Midfield | 110   | 13.0725            |
+| Florian Wirtz         | B. Leverkusen   | midfield - Attacking Midfield | 85    | 13.0725            |
+| Joshua Kimmich        | Bayern Munich   | midfield - Defensive Midfield | 80    | 6.995              |
+| Christopher Nkunku    | RB Leipzig      | Attack - Second Striker       | 80    | 17.928571428571427 |
+| Matthijs de Ligt      | Bayern Munich   | Defender - Centre-Back        | 75    | 10.206818181818184 |
+| Josko Gvardiol        | RB Leipzig      | Defender - Centre-Back        | 75    | 10.206818181818184 |
+| Leroy Sané            | Bayern Munich   | Attack - Right Winger         | 70    | 10.865000000000002 |
+| Alphonso Davies       | Bayern Munich   | Defender - Left-Back          | 70    | 6.977500000000001  |
+| Kingsley Coman        | Bayern Munich   | Attack - Left Winger          | 65    | 12.218181818181819 |
+| Leon Goretzka         | Bayern Munich   | midfield - Central Midfield   | 65    | 10.083928571428574 |
+| Randal Kolo Muani     | E. Frankfurt    | Attack - Centre-Forward       | 65    | 7.571232876712331  |
+| João Cancelo          | Bayern Munich   | Defender - Right-Back         | 60    | 7.721590909090909  |
+| Dayot Upamecano       | Bayern Munich   | Defender - Centre-Back        | 60    | 10.206818181818184 |
+| Serge Gnabry          | Bayern Munich   | Attack - Right Winger         | 55    | 10.865000000000002 |
+| Moussa Diaby          | B. Leverkusen   | Attack - Right Winger         | 50    | 10.865000000000002 |
+| Lucas Hernández       | Bayern Munich   | Defender - Centre-Back        | 50    | 10.206818181818184 |
+| Sadio Mané            | Bayern Munich   | Attack - Left Winger          | 45    | 12.218181818181819 |
+| Nico Schlotterbeck    | Bor. Dortmund   | Defender - Centre-Back        | 40    | 10.206818181818184 |
+| Dominik Szoboszlai    | RB Leipzig      | midfield - Attacking Midfield | 40    | 13.0725            |
+| Dani Olmo             | RB Leipzig      | midfield - Attacking Midfield | 40    | 13.0725            |
+| Julian Brandt         | Bor. Dortmund   | midfield - Attacking Midfield | 40    | 13.0725            |
+| Benjamin Pavard       | Bayern Munich   | Defender - Right-Back         | 35    | 7.721590909090909  |
+| Jeremie Frimpong      | B. Leverkusen   | Defender - Right-Back         | 35    | 7.721590909090909  |
+| Gregor Kobel          | Bor. Dortmund   | Goalkeeper                    | 35    | 2.085869565217392  |
+| Niklas Süle           | Bor. Dortmund   | Defender - Centre-Back        | 35    | 10.206818181818184 |
+| Karim Adeyemi         | Bor. Dortmund   | Attack - Left Winger          | 35    | 12.218181818181819 |
+| Evan Ndicka           | E. Frankfurt    | Defender - Centre-Back        | 32    | 10.206818181818184 |
+| Marcus Thuram         | Bor. M'gladbach | Attack - Centre-Forward       | 32    | 7.571232876712331  |
+| Manu Koné             | Bor. M'gladbach | midfield - Central Midfield   | 30    | 10.083928571428574 |
+| Edmond Tapsoba        | B. Leverkusen   | Defender - Centre-Back        | 30    | 10.206818181818184 |
+| Sébastien Haller      | Bor. Dortmund   | Attack - Centre-Forward       | 30    | 7.571232876712331  |
+| Daichi Kamada         | E. Frankfurt    | midfield - Attacking Midfield | 30    | 13.0725            |
+| Patrik Schick         | B. Leverkusen   | Attack - Centre-Forward       | 30    | 7.571232876712331  |
+| Ryan Gravenberch      | Bayern Munich   | midfield - Central Midfield   | 30    | 10.083928571428574 |
+| Youssoufa Moukoko     | Bor. Dortmund   | Attack - Centre-Forward       | 30    | 7.571232876712331  |
+| Jesper Lindström      | E. Frankfurt    | midfield - Attacking Midfield | 28    | 13.0725            |
+| Mohamed Simakan       | RB Leipzig      | Defender - Centre-Back        | 28    | 10.206818181818184 |
+| Giovanni Reyna        | Bor. Dortmund   | midfield - Attacking Midfield | 28    | 13.0725            |
+| Konrad Laimer         | RB Leipzig      | midfield - Central Midfield   | 28    | 10.083928571428574 |
+| Noussair Mazraoui     | Bayern Munich   | Defender - Right-Back         | 28    | 7.721590909090909  |
+| Timo Werner           | RB Leipzig      | Attack - Centre-Forward       | 25    | 7.571232876712331  |
+| Piero Hincapié        | B. Leverkusen   | Defender - Centre-Back        | 25    | 10.206818181818184 |
+| Djibril Sow           | E. Frankfurt    | midfield - Central Midfield   | 22    | 10.083928571428574 |
+| Xaver Schlager        | RB Leipzig      | midfield - Central Midfield   | 22    | 10.083928571428574 |
+| Matthias Ginter       | SC Freiburg     | Defender - Centre-Back        | 20    | 10.206818181818184 |
+| Christoph Baumgartner | TSG Hoffenheim  | midfield - Attacking Midfield | 20    | 13.0725            |
+| Jonathan Tah          | B. Leverkusen   | Defender - Centre-Back        | 20    | 10.206818181818184 |
+| Odilon Kossounou      | B. Leverkusen   | Defender - Centre-Back        | 20    | 10.206818181818184 |
+| Mathys Tel            | Bayern Munich   | Attack - Centre-Forward       | 20    | 7.571232876712331  |
+| Raphaël Guerreiro     | Bor. Dortmund   | Defender - Left-Back          | 20    | 6.977500000000001  |
+| Maxence Lacroix       | VfL Wolfsburg   | Defender - Centre-Back        | 20    | 10.206818181818184 |
+| Ramy Bensebaini       | Bor. M'gladbach | Defender - Left-Back          | 20    | 6.977500000000001  |
+| Nico Elvedi           | Bor. M'gladbach | Defender - Centre-Back        | 20    | 10.206818181818184 |
+| Philipp Lienhart      | SC Freiburg     | Defender - Centre-Back        | 20    | 10.206818181818184 |
+| André Silva           | RB Leipzig      | Attack - Centre-Forward       | 20    | 7.571232876712331  |
+| David Raum            | RB Leipzig      | Defender - Left-Back          | 20    | 6.977500000000001  |
+| Micky van de Ven      | VfL Wolfsburg   | Defender - Centre-Back        | 18    | 10.206818181818184 |
+| Salih Özcan           | Bor. Dortmund   | midfield - Defensive Midfield | 17    | 6.995              |
+| Amadou Haidara        | RB Leipzig      | midfield - Central Midfield   | 17    | 10.083928571428574 |
+| Maximilian Arnold     | VfL Wolfsburg   | midfield - Central Midfield   | 17    | 10.083928571428574 |
+| Benjamin Henrichs     | RB Leipzig      | Defender - Right-Back         | 15    | 7.721590909090909  |
+| Anton Stach           | 1.FSV Mainz 05  | midfield - Defensive Midfield | 15    | 6.995              |
+| Adam Hlozek           | B. Leverkusen   | Attack - Centre-Forward       | 15    | 7.571232876712331  |
+| Borna Sosa            | VfB Stuttgart   | Defender - Left-Back          | 15    | 6.977500000000001  |
+| Julian Weigl          | Bor. M'gladbach | midfield - Defensive Midfield | 15    | 6.995              |
+| Lukas Nmecha          | VfL Wolfsburg   | Attack - Centre-Forward       | 14    | 7.571232876712331  |
+| Jonas Wind            | VfL Wolfsburg   | Attack - Centre-Forward       | 14    | 7.571232876712331  |
+| Emre Can              | Bor. Dortmund   | midfield - Defensive Midfield | 14    | 6.995              |
+| Angeliño              | TSG Hoffenheim  | Defender - Left-Back          | 14    | 6.977500000000001  |
+| Niclas Füllkrug       | Werder Bremen   | Attack - Centre-Forward       | 13    | 7.571232876712331  |
+| Ridle Baku            | VfL Wolfsburg   | Defender - Right-Back         | 13    | 7.721590909090909  |
+| Ellyes Skhiri         | 1.FC Köln       | midfield - Defensive Midfield | 13    | 6.995              |
+| Ermedin Demirovic     | FC Augsburg     | Attack - Centre-Forward       | 12    | 7.571232876712331  |
+| Joe Scally            | Bor. M'gladbach | Defender - Right-Back         | 12    | 7.721590909090909  |
+| Rafael Borré          | E. Frankfurt    | Attack - Centre-Forward       | 12    | 7.571232876712331  |
+| Jonathan Burkardt     | 1.FSV Mainz 05  | Attack - Centre-Forward       | 12    | 7.571232876712331  |
+| Sardar Azmoun         | B. Leverkusen   | Attack - Centre-Forward       | 12    | 7.571232876712331  |
+| Kiliann Sildillia     | SC Freiburg     | Defender - Right-Back         | 12    | 7.721590909090909  |
+| Josip Stanisic        | Bayern Munich   | Defender - Right-Back         | 12    | 7.721590909090909  |
+| Lukas Klostermann     | RB Leipzig      | Defender - Right-Back         | 12    | 7.721590909090909  |
+| Mergim Berisha        | FC Augsburg     | Attack - Centre-Forward       | 12    | 7.571232876712331  |
+| Lucas Tousart         | Hertha BSC      | midfield - Defensive Midfield | 11    | 6.995              |
+| Robert Andrich        | B. Leverkusen   | midfield - Defensive Midfield | 11    | 6.995              |
+| Robert Skov           | TSG Hoffenheim  | midfield - Right Midfield     | 9     | 4.525              |
+| Kevin Trapp           | E. Frankfurt    | Goalkeeper                    | 8.5   | 2.085869565217392  |
+| Koen Casteels         | VfL Wolfsburg   | Goalkeeper                    | 8     | 2.085869565217392  |
+| Junior Dina Ebimbe    | E. Frankfurt    | midfield - Right Midfield     | 7.5   | 4.525              |
+| Mark Flekken          | SC Freiburg     | Goalkeeper                    | 7     | 2.085869565217392  |
+| Jonas Omlin           | Bor. M'gladbach | Goalkeeper                    | 7     | 2.085869565217392  |
+| Manuel Neuer          | Bayern Munich   | Goalkeeper                    | 7     | 2.085869565217392  |
+| Péter Gulácsi         | RB Leipzig      | Goalkeeper                    | 6     | 2.085869565217392  |
+| Robin Zentner         | 1.FSV Mainz 05  | Goalkeeper                    | 5     | 2.085869565217392  |
+| Yann Sommer           | Bayern Munich   | Goalkeeper                    | 5     | 2.085869565217392  |
+| Marvin Schwäbe        | 1.FC Köln       | Goalkeeper                    | 5     | 2.085869565217392  |
+| Oliver Baumann        | TSG Hoffenheim  | Goalkeeper                    | 4.5   | 2.085869565217392  |
+| Oliver Christensen    | Hertha BSC      | Goalkeeper                    | 4.5   | 2.085869565217392  |
+| Frederik Rönnow       | Union Berlin    | Goalkeeper                    | 3.5   | 2.085869565217392  |
 ```
 
 ### 7) На якій позиції найважче отримати контракт з будь-якою компанією 
