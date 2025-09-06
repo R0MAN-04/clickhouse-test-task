@@ -40,7 +40,6 @@ LIMIT 3;
 
 Результат:
 
----
 | club          | total_defence_value |
 |---------------|---------------------|
 | Bayern Munich | 398.5               |
