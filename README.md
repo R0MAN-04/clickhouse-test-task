@@ -20,7 +20,7 @@
 # Bundesliga Players – ClickHouse Test Task
 
 ## Джерело даних
-Дані взято з Kaggle:  
+Датасет з Kaggle:  
 [Bundesliga Soccer Player Dataset](https://www.kaggle.com/datasets/oles04/bundesliga-soccer-player)
 
 ---
