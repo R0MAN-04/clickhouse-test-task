@@ -30,8 +30,8 @@
 ### 1) Топ-3 клуби з найдорожчим захистом
 ```sql
 SELECT 
-    club,
-    SUM(price) AS total_defence_value
+    club
+    , SUM(price) AS total_defence_value
 FROM bundesliga_player
 WHERE position LIKE 'Defender -%'
 GROUP BY club
