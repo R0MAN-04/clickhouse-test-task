@@ -776,7 +776,7 @@ SELECT
 FROM bundesliga_player
 GROUP BY position
 ORDER BY no_agent_ratio DESC
-LIMIT 1
+LIMIT 1;
 
 Результат:
 | position                 | no_agent_ratio |
