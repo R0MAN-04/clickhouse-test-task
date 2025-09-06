@@ -563,16 +563,18 @@ ORDER BY avg_french_price DESC;
 
 Результат:
 
-| club            | german_ratio |
-|-----------------|--------------|
-| RB Leipzig U19  | 1            |
-| Hertha BSC U19  | 1            |
-| W. Bremen U19   | 1            |
-| FC Augsburg U19 | 1            |
-| W. Bremen II    | 1            |
-| 1.FC Köln U19   | 1            |
-| RB Leipzig U17  | 1            |
-| Hertha BSC II   | 1            |
+| club            | avg_french_price   |
+|-----------------|--------------------|
+| RB Leipzig      | 54                 |
+| Bayern Munich   | 46                 |
+| E. Frankfurt    | 34.833333333333336 |
+| B. Leverkusen   | 32.5               |
+| Bor. M'gladbach | 15.419999999999998 |
+| VfL Wolfsburg   | 9.333333333333334  |
+| 1.FSV Mainz 05  | 8.75               |
+| TSG Hoffenheim  | 8.5                |
+| SC Freiburg     | 6.6                |
+| Hertha BSC      | 6.1                |
 ```
 ### 4) Клуби, де частка німців вища за 90%
 ```sql
