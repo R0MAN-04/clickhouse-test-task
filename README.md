@@ -788,7 +788,7 @@ LIMIT 1;
 ```sql
 SELECT
     club
-    ,fifth_earliest_expiry
+    , fifth_earliest_expiry
 FROM (
     SELECT
         club
@@ -843,14 +843,13 @@ LIMIT 1;
 ### 11) У яких командах є тезки
 ```sql
 SELECT 
-    club,
-    name,
-    COUNT() AS count_same_name
+    club
+    , name
+    , COUNT() AS count_same_name
 FROM bundesliga_player
 GROUP BY club, name
 HAVING count_same_name > 1
 ORDER BY club, count_same_name DESC;
-
 
 Результат:
 
