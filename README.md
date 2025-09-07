@@ -611,7 +611,7 @@ FROM (
         , price
         , ROW_NUMBER() OVER (PARTITION BY age ORDER BY price DESC) AS rn
     FROM bundesliga_player
-) t
+)
 WHERE rn = 1
 ORDER BY age;
 
