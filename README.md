@@ -825,19 +825,20 @@ LIMIT 1;
 
 ### 10) Команда із найзігранішим складом (найдовше грають разом)
 ```sql
-SELECT
+SELECT 
     club
-    , AVG(dateDiff('day', toDate(joined_club), today())) AS avg_years_in_club
+    , AVG(dateDiff('day', toDate(joined_club), today())) / 365.0 AS avg_years_in_club
 FROM bundesliga_player
+WHERE joined_club IS NOT NULL
 GROUP BY club
 ORDER BY avg_years_in_club DESC
 LIMIT 1;
 
 Результат:
 
-| club            | avg_years_in_club |
-|-----------------|-------------------|
-| Bor. M'gladbach | 2375.740740740741 |
+| club            | avg_years_in_club  |
+|-----------------|--------------------|
+| Bor. M'gladbach | 6.5225773718924405 |
 ```
 
 ### 11) Команди, у яких є тезки
