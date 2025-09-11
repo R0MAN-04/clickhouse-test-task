@@ -842,19 +842,36 @@ LIMIT 1;
 ```
 
 ### 11) Команди, у яких є тезки
+(припущення: ім'ям гравця вважаємо перше ім'я в колонці name)
 ```sql
-SELECT 
+SELECT
     club
-    , name
-    , COUNT() AS count_same_name
+    , splitByChar(' ', name)[1] AS first_name
+    , COUNT() AS same_firstname_count
 FROM bundesliga_player
-GROUP BY club, name
-HAVING count_same_name > 1
-ORDER BY club, count_same_name DESC;
+GROUP BY club, first_name
+HAVING same_firstname_count > 1
+ORDER BY same_firstname_count DESC, club;
 
 Результат:
 
-No records found
+| club            | first_name | same_firstname_count |
+|-----------------|------------|----------------------|
+| 1.FC Köln       | Florian    | 2                    |
+| 1.FC Köln       | Timo       | 2                    |
+| Bor. Dortmund   | Julian     | 2                    |
+| Bor. Dortmund   | Nico       | 2                    |
+| Bor. M'gladbach | Jonas      | 2                    |
+| FC Augsburg     | Arne       | 2                    |
+| FC Augsburg     | Daniel     | 2                    |
+| FC Schalke 04   | Michael    | 2                    |
+| SC Freiburg     | Noah       | 2                    |
+| TSG Hoffenheim  | Kevin      | 2                    |
+| Union Berlin    | Paul       | 2                    |
+| Union Berlin    | Kevin      | 2                    |
+| VfB Stuttgart   | Florian    | 2                    |
+| VfL Bochum      | Philipp    | 2                    |
+| Werder Bremen   | Niklas     | 2                    |
 ```
 
 ### 12) Команди, де топ-3 гравці займають 50% платіжної відомості
